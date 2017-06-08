@@ -1,8 +1,10 @@
 package wordcount;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 
+import java.io.FileReader;
+import java.util.HashMap;
+import java.util.*;
 public class Shuffilng {
 
 	public static void main(String[] args) throws Exception {
@@ -11,6 +13,7 @@ public class Shuffilng {
 		String[] collecting=new String[4];
 		int you = 0;
 		int k = 0,p=0;
+		HashMap ani=new HashMap(); 
 		while (bif.ready()) {
 			String[] splitting = bif.readLine().split(" ");
 			String[] splitting1 = new String[splitting.length];
@@ -36,19 +39,25 @@ public class Shuffilng {
 				splitting1[k++] = check;
 
 				if (count > 0) {
-					System.out.println(check + "  " + count);
+					//System.out.println(check + "  " + count);
 					 collecting[p++]=check + String.valueOf(count);
-
+                     ani.put(check,count);
 				}
 			}
 			
 		}
 		bif.close();
+		
 		for(int b=0;b<collecting.length;b++){
 			System.out.println(collecting[b]);
 		
 		}
 		
+		Iterator<String> itr=ani.keySet().iterator();
+		while(itr.hasNext()){
+			String str=(String)itr.next();
+			System.out.println(str+" "+ani.get(str));
+		}
 
 	}
 
