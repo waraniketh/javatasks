@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class Testing2 {
+	int cool = 10;
+	int war = 10;
+
+	public int hlcu(int foreasy) {
+		while (foreasy > 0) {
+			war = war * 10;
+			foreasy--;
+		}
+		return war;
+	}
+
+	public int test4(int value) {
+		while (value > 0) {
+			cool = cool * 10;
+			value--;
+		}
+		return cool;
+	}
+
+	public static void main(String[] args) {
+		int sum = 0, dup = 0;
+		Scanner s = new Scanner(System.in);
+		System.out.println("enter the number");
+		int num = s.nextInt();
+		dup = num;
+		System.out.println("this is number" + num);
+		int current = (String.valueOf(num).length()) - 1;
+		while (current > 1) {
+			int sol = (String.valueOf(num).length() - (current + 1));
+			int multiply = 10, multiply2 = 0;
+			multiply = new Testing2().test4(sol);
+			multiply2 = new Testing2().hlcu((current - 1));
+			int num1 = 0;
+			while (multiply > 0) {
+				if (num > 0) {
+					System.out.println(num / multiply);
+					sum = sum + (num1 = num / multiply);
+
+				}
+				if ((num - (num1 * multiply)) > multiply2) {
+					num = num - (num1 * multiply);
+				} else {
+					System.out.println(num % multiply2);
+					sum = sum + (num % multiply2);
+					break;
+				}
+				multiply = multiply / multiply2;
+			}
+			current--;
+		}
+		s.close();
+		sum = sum + dup;
+		int sum3 = 0;
+		while (dup > 0) {
+			sum3 = sum3 + dup % 10;
+			dup = dup / 10;
+		}
+		System.out.println("final sum is =" + (sum + sum3));
+	}
+}
