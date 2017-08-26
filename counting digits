@@ -28,7 +28,7 @@ public class Testing2 {
 		dup = num;
 		System.out.println("this is number" + num);
 		int current = (String.valueOf(num).length()) - 1;
-		while (current > 1) {
+		while (current > 0) {
 			int sol = (String.valueOf(num).length() - (current + 1));
 			int multiply = 10, multiply2 = 0;
 			multiply = new Testing2().test4(sol);
@@ -50,14 +50,10 @@ public class Testing2 {
 				multiply = multiply / multiply2;
 			}
 			current--;
+			num = dup;
 		}
 		s.close();
 		sum = sum + dup;
-		int sum3 = 0;
-		while (dup > 0) {
-			sum3 = sum3 + dup % 10;
-			dup = dup / 10;
-		}
-		System.out.println("final sum is =" + (sum + sum3));
+		System.out.println("final sum is =" + (sum));
 	}
 }
